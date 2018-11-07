@@ -23,26 +23,28 @@ public class FastdfsTest {
 	@Before
 	public void beforeAll() throws Exception {
 		/** 加载配置文件，产生绝对路径 */
-		String conf_filename = this.getClass()
-				.getResource("/fastdfs_client.conf").getPath();
-		/** 初始化客户端全局的对象 */
+	String conf_filename = this.getClass()
+			.getResource("/fdfs_client.conf").getPath();
+	/** 初始化客户端全局的对象 */
 		ClientGlobal.init(conf_filename);
 	}
 	
 	/** 上传文件 */
 	@Test
 	public void upload_file() throws Exception{
+
 		/** 创建存储客户端对象 */
 		StorageClient storageClient = new StorageClient();
 		/** 上传文件 */
 		//String[] arr = storageClient.upload_file("C:/Users/Public/Pictures/Sample Pictures/15.jpg", "jpg", null);
-		String[] arr = storageClient.upload_file("F:/1.png", "png", null);
+		String[] arr = storageClient.upload_file("D:/1.txt", "txt", null);
 		/**
 		 * 访问路径：http://192.168.12.131/group1/M00/00/00/wKgMg1o53fOAL1CRAABonuLw4M4127.jpg
 		 * [group1, M00/00/00/wKgMgFlIkk2AHfnLAABonuLw4M4075.jpg]
 		 * 数组中的第一个元素：组的名称
 		 * 数组中的第二个元素：文件存储的路径
 		 */
+		//[group1, M00/00/00/wKio_lviRKOAXOagAAGoBEhGR7I633.jpg]
 		System.out.println(Arrays.toString(arr));
 	}
 	
@@ -52,9 +54,9 @@ public class FastdfsTest {
 		/** 创建存储客户端对象 */
 		StorageClient storageClient = new StorageClient();
 		/** 下载文件 */
-		byte[] data = storageClient.download_file("group1", "M00/00/00/wKgMgFlIkk2AHfnLAABonuLw4M4075.jpg");
+		byte[] data = storageClient.download_file("group1", "M00/00/00/wKio_lviSiOAVec_AAAAPKT9LQE821.txt");
 		System.out.println(data.length);
-		FileOutputStream fos = new FileOutputStream(new File("F:/workspace/java/fastdfs-test/src/test/resources/1.jpg"));
+		FileOutputStream fos = new FileOutputStream(new File("D:/fastdfs-utils/src/test/resources/1.txt"));
 		fos.write(data);
 		fos.flush();
 		fos.close();
@@ -66,7 +68,7 @@ public class FastdfsTest {
 		/** 创建存储客户端对象 */
 		StorageClient storageClient = new StorageClient();
 		/** 删除文件 */
-		int res = storageClient.delete_file("group1", "M00/00/00/wKgMgFlIkk2AHfnLAABonuLw4M4075.jpg");
+		int res = storageClient.delete_file("group1", "M00/00/00/wKio_lviRW6AT9J6AAGoBEhGR7I475.jpg");
 		System.out.println(res);
 	}
 }

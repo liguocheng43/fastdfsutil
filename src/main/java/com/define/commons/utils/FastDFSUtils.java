@@ -66,7 +66,7 @@ public class FastDFSUtils {
 
     /**
      * 删除文件
-     * return:0代表删除不成功
+     * return:0代表删除成功
      * group_name:group1
      * romte_fileName:M00/00/01/wKjIgFWOYc6APpjAAAD-qk29i78248.jpg
      */
